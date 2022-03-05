@@ -8,9 +8,24 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+const mongoose = require('mongoose');
 const campsiteRouter = require('./routes/campsiteRouter');
 const promotionRouter = require('./routes/promotionRouter');
 const partnerRouter = require('./routes/partnerRouter');
+
+//momgoose
+const url = 'mongodb://localhost:27017/nucampsite';
+const connect = mongoose.connect(url, {
+	useCreateIndex: true,
+	useFindAndModify: false,
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
+
+connect.then(
+	() => console.log('Connected correctly to server'),
+	err => console.log(err)
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
