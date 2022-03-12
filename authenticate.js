@@ -42,8 +42,10 @@ exports.verifyAdmin = (req, res, next) => {
 	if (req.user.admin) {
 		return next();
 	} else {
-		const err = new Error('Your are not registered as an admin');
-		res.status = 403;
+		// res.statusCode = 403;
+		// res.end(`Your are not registered as an admin`);
+		const err = new Error('You are not authroized to perform thie operation!');
+		err.status = 403;
 		return next(err);
 	}
 };
