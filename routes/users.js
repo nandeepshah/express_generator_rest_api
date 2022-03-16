@@ -20,6 +20,7 @@ router.get(
 	}
 );
 
+/* allow the user to signup */
 router.post('/signup', (req, res) => {
 	User.register(
 		new User({ username: req.body.username }),
@@ -54,6 +55,7 @@ router.post('/signup', (req, res) => {
 	);
 });
 
+/* POST route to let user login */
 router.post('/login', passport.authenticate('local'), (req, res) => {
 	const token = authenticate.getToken({ _id: req.user._id });
 	res.setHeader('Content-Type', 'application/json');
