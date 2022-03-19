@@ -7,6 +7,7 @@ const config = require('./config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var favoriteRouter = require('./routes/favoriteRouter');
 
 var app = express();
 app.all('*', (req, res, next) => {
@@ -63,6 +64,7 @@ app.use('/campsites', campsiteRouter);
 app.use('/promotions', promotionRouter);
 app.use('/partners', partnerRouter);
 app.use('/imageUpload', uploadRouter);
+app.use('/favorites', favoriteRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
